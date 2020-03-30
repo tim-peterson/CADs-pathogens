@@ -12,6 +12,9 @@ stats = importr('stats')
 
 dataset = '/Users/timrpeterson/OneDrive-v2/Data/SSRIs/CADs_all_pvals.csv'
 
+output = []
+
+
 with open(dataset) as csv_file:
 	csv_reader = csv.reader(csv_file, delimiter=",")
 	#next(csv_reader)
@@ -20,15 +23,15 @@ with open(dataset) as csv_file:
 
 		spamwriter = csv.writer(csvfile, delimiter=',')
 	
-		genes = {}
+		#genes = {}
 		for row in csv_reader:
 			gene = row[0]
 			row.pop(0)
 
-			p_adjust = stats.p_adjust(FloatVector(row), method = 'BH')
+			p_adjust = stats.p_adjust(row, method = 'BH')
 			pval = scipy.stats.stats.combine_pvalues(p_adjust)
 
-		output = [gene, pval[1]]
+			output.append([gene, pval[1]])
 			#sort the output desc
 		output2 = sorted(output, key=lambda x: x[1]) #, reverse=True
 
