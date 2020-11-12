@@ -1,7 +1,7 @@
 # CADs-pathogens
 Relationship between cationic amphipathic drugs (CADs) and pathogens.
 
-Biorxiv paper (coming soon).
+[Biorxiv paper](https://www.biorxiv.org/content/10.1101/2020.04.10.035683v1.full.pdf).
 
 # Figure 1C
 
@@ -20,6 +20,11 @@ genome-wide screens with the 14 pathogens.
 # Figure 3B
 
 - RNAseq_CADs_nonCADs.sql: get all genes with greater than 5x fold change with all CADs where dmso control has a counts per million of greater than 1.
+
+
+# Figure 3C
+
+- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 18 pathogens.
 
 
 # underlying data
