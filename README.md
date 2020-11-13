@@ -24,8 +24,8 @@ genome-wide screens with the 14 pathogens.
 
 # Figure 3C
 
-- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 18 pathogens.
-
+[//]: # (- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 18 pathogens.)
+- https://colab.research.google.com/drive/1NbzxNsQUByupO5XP4dq623UTGKEdmydx?usp=sharing 
 
 # underlying data
 

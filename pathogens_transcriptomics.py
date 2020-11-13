@@ -23,6 +23,29 @@ with open(file) as csv_file:
 #for x in list(mouse_w_human)[0:3]:
 	#print ("key {}, value {} ".format(x, mouse_w_human[x]))
 
+"""
+genes_per_pathogens = {}
+file = '/Users/timpeterson/Downloads/pathogentranscriptomics (2).csv'
+
+with open(file, encoding='utf-8-sig') as csv_file:
+	csv_reader = csv.DictReader(csv_file, delimiter=',')
+
+	for row in csv_reader:
+
+		if row['Pathogen'] not in genes_per_pathogens:
+
+
+			genes_per_pathogens[row['Pathogen']] = {}
+
+			if row['ENSIG_Gene_ID'] not in genes_per_pathogens:
+				genes_per_pathogens.append(row['Gene_symbol'].lower())
+		else:
+
+			if row['Gene_symbol'].lower() not in genes_per_pathogens:
+				genes_per_pathogens.append(row['Gene_symbol'].lower())
+
+"""
+
 
 file = '/Users/timpeterson/Downloads/pathogentranscriptomics (1).csv'
 
