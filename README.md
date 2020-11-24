@@ -24,8 +24,11 @@ genome-wide screens with the 15 pathogens.
 
 # Figure 4C
 
+- pathogens_transcriptional_profiling_count.R: code to visualize the common gene hits identified in
+transcriptional profiling of mammalian tissues/cells in response to 13 diverse pathogens. Most code to generate the raw data is SQL code, namely in pathogens_transcriptional_profiling.sql. 
+
 [//]: # (- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 13 pathogens.)
-- https://colab.research.google.com/drive/1NbzxNsQUByupO5XP4dq623UTGKEdmydx?usp=sharing 
+- Equivalent code to the SQL queries is available via a Juptyer notebook: https://colab.research.google.com/drive/1CoYDm8LvrK9tRUsFbhweioUD1yF5Ozdy?usp=sharing
 
 # underlying data
 
