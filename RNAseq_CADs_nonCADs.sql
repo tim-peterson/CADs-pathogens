@@ -67,7 +67,7 @@ and avg_celecox/avg_dmso_hi < 2*/
 where avg_dmso_hi > 0.1 and avg_water_hi > 0
 order by (/*avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_chloro/avg_dmso_hi +*/ avg_amiod/avg_dmso_hi + avg_sert/avg_dmso_hi + avg_fluox/avg_dmso_hi )/3 asc) a where avg_cads > 0 and avg_non_cads > 0.1 and ( /*avg_cads/avg_non_cads > 3 /*or*/ avg_cads/avg_non_cads < 0.33)
 
-/* CADs all for paper scatter plot */
+/* CADs all genes for paper scatter plot */
 select external_gene_name as gene, avg_cads, avg_cads/avg_non_cads ratio from (select external_gene_name, (avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_amiod/avg_dmso_hi + avg_sert/avg_dmso_hi + avg_fluox/avg_dmso_hi + avg_chloro/avg_dmso_hi)/6 avg_cads,
 (avg_aln/avg_dmso_hi + avg_atorv/avg_dmso_hi + avg_phen/avg_dmso_hi)/3 avg_non_cads
 
@@ -127,11 +127,11 @@ f.Pathogen1=g.Pathogen where (count_per_pathogen > 1 and meta_count > 1) or (cou
 
 /* get both up and down genes for figure */
 
-select /*all_gene, */ cnt_all + round(rand() * 0.98 + 0.01, 2) as cnt_all_round, 
+select /*all_gene, */ cnt_all + round(rand() * 0.49 + 0.01, 2) as cnt_all_round, 
 
     CASE
         WHEN (cnt_up IS NULL and cnt_down IS NULL)
-        THEN 0 + round(rand() * 1.96 + 0.01, 2)
+        THEN 0 + round(rand() * 0.49 + 0.01, 2)
         END AS cnt_all_round_ ,
         
         
@@ -142,7 +142,7 @@ select /*all_gene, */ cnt_all + round(rand() * 0.98 + 0.01, 2) as cnt_all_round,
         	WHEN (cnt_up is null and cnt_down is NOT NULL)
         cnt_all
         END AS cnt_all_*/
-	cnt_up + round(rand() * 0.98 + 0.01, 2) as cnt_up_round,  (0 - cnt_down) - round(rand() * 0.98 + 0.01, 2) as cnt_down_round
+	cnt_up + round(rand() * 0.49 + 0.01, 2) as cnt_up_round,  (0 - cnt_down) - round(rand() * 0.49 + 0.01, 2) as cnt_down_round
  from 
 
 (select final_human as all_gene, cnt as cnt_all from (select *, count(final_human) cnt from (select  final_human, Pathogen as pathogen1, FC_or_Diff, count(final_human) count_per_pathogen from 
@@ -257,6 +257,7 @@ left join (select Pathogen, count(Pathogen) meta_count from pathogens_transcript
 on
 f.Pathogen1=g.Pathogen where (count_per_pathogen > 1 and meta_count > 1) or (count_per_pathogen = 1 and meta_count = 1) group by final_human order by cnt desc ) h where cnt > 1) downreg
 on all_genes.all_gene=downreg.down_gene
+
 
 
 
