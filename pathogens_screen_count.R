@@ -10,5 +10,7 @@ reverselog_trans <- function(base = exp(1)) {
             domain = c(1e-100, Inf))
 }
 
-
+# Figure 3B
 ggplot(pathogens_combined, aes(x=global_rank, y=count)) + geom_jitter(width = 0.1) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank()) + scale_x_continuous(trans=reverselog_trans(10))
+
+
