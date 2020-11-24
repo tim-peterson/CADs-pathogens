@@ -17,9 +17,9 @@ Relationship between cationic amphipathic drugs (CADs) and pathogens.
 - pathogens_screen_count.R: code to visualize the common gene hits identified in
 genome-wide screens with the 15 pathogens.
 
-# Figure 4B
+# Figure 4A
 
-- RNAseq_CADs_nonCADs.sql: get all genes with greater than 5x fold change with all CADs where dmso control has a counts per million of greater than 1.
+- RNAseq_CADs_nonCADs.sql: get all genes with greater than 3x fold up or downregulation change with all CADs where dmso control has a counts per million of greater than 0.1.
 
 
 # Figure 4C
