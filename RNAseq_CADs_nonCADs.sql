@@ -50,7 +50,7 @@ order by (avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_amiod/avg_dmso_h
 
 
 /* CADs all genes for paper scatter plot */
-select external_gene_name as gene, avg_cads, avg_cads/avg_non_cads ratio from (select external_gene_name, (avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_amiod/avg_dmso_hi + avg_sert/avg_dmso_hi + avg_fluox/avg_dmso_hi + avg_chloro/avg_dmso_hi)/6 avg_cads,
+select external_gene_name as gene, avg_cads, avg_non_cads, avg_cads/avg_non_cads ratio from (select external_gene_name, (avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_amiod/avg_dmso_hi + avg_sert/avg_dmso_hi + avg_fluox/avg_dmso_hi + avg_chloro/avg_dmso_hi)/6 avg_cads,
 (avg_aln/avg_dmso_hi + avg_atorv/avg_dmso_hi + avg_phen/avg_dmso_hi)/3 avg_non_cads
 
  from CADs_ge_v3_with_avgs
