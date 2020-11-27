@@ -12,17 +12,17 @@ Relationship between cationic amphipathic drugs (CADs) and pathogens.
 
 -  CRISPRi_CADs_greater_than2.5.sql: get all genes with greater than 2.5x standard deviations from the mean for all six CADs.
 
-# Figure 3B
+# Figure 2B
 
 - pathogens_screen_count.R: code to visualize the common gene hits identified in
 genome-wide screens with the 15 pathogens.
 
-# Figure 4A
+# Figure 3A
 
 - RNAseq_CADs_nonCADs.sql: get all genes with greater than 3x fold up or downregulated with all CADs where dmso control has a counts per million of greater than 0.1.
 
 
-# Figure 4C
+# Figure 3C
 
 - pathogens_transcriptional_profiling_count.R: code to visualize the common gene hits identified in
 transcriptional profiling of mammalian tissues/cells in response to 13 diverse pathogens. Most code to generate the raw data is SQL code, namely in pathogens_transcriptional_profiling.sql. 
