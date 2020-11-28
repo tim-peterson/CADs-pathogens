@@ -1,33 +1,38 @@
-library(tidyverse)
 
-
+install_github('sinhrks/ggfortify')
+install.packages("readr")
 # You need to load a package (like magrittr or dplyr) that defines the function first, then it should work.
-
 install.packages("magrittr") # package installations are only needed the first time you use it
 install.packages("dplyr")    # alternative installation of the %>%
+library(tidyverse)
 library(magrittr) # needs to be run every time you start R and want to use %>%
 library(dplyr)    # alternatively, this also loads %>%
+library(readr)
 
-# gapminder data in wide form from Carpentries
-gapminder_w_url <- "https://bit.ly/2vEDq5b"
-# read the data into dataframe
-gapminder_wide <- read_csv(gapminder_w_url)
-# first3 rows
-head(gapminder_wide, n=3)
+library(devtools)
+library(ggfortify)
+library(ggplot2)
 
-## # A tibble: 3 x 38
-##   continent country gdpPercap_1952 gdpPercap_1957 gdpPercap_1962
-##   <chr>     <chr>            <dbl>          <dbl>          <dbl>
-## 1 Africa    Algeria          2449.          3014.          2551.
-## 2 Africa    Angola           3521.          3828.          4269.
-## 3 Africa    Benin            1063.           960.           949.
-## # … with 33 more variables: gdpPercap_1967 <dbl>, gdpPercap_1972 <dbl
+CADs_SARS_screens <- read_csv("OneDrive-v3/Data/CADs/v2/CADs_SARS-CoV-2_CRISPRscreens.csv")
+df <- CADs_SARS_screens 
+df['sars_5'] <- df['lfc_MOI1']
+df['sars_4'] <- df['Cas9-v1 Avg.']
+df0 <- df[ , c("verap", "amiod", "sert", "chloro", "nortrip", "fluox", 'sars_5', 'sars_4')]
+df0_na <- na.omit(df0)
 
-gapminder_life <- gapminder_wide %>%
-  filter(continent %in% c("Africa","Europe")) %>%
-  select(continent,country,starts_with('lifeExp'))
+maxs <- apply(df0_na, 2, max)    
+mins <- apply(df0_na, 2, min)
+#scale(data, center = mins, scale = maxs - mins)
 
-gapminder_life <- gapminder_life %>% 
-  unite("continent_country", c(continent,country)) %>%
-  column_to_rownames("continent_country")
-head(gapminder_life)
+dat.scale <- scale(df0_na, center = mins, scale = maxs - mins)
+
+df0_na_scaled <- as.data.frame(dat.scale)
+
+tt2_t <- t(df0_na_scaled)
+
+autoplot(prcomp(tt2_t), data = tt2_t, label = TRUE)
+
+CADs_1_t_na <- na.omit(CADs_1_t)
+tt2_t_na <- na.omit(tt2_t)
+
+
