@@ -15,10 +15,18 @@ library(ggplot2)
 
 CADs_SARS_screens <- read_csv("OneDrive-v3/Data/CADs/v2/CADs_SARS-CoV-2_CRISPRscreens.csv")
 df <- CADs_SARS_screens 
+colnames(df)
 df['sars_5'] <- df['lfc_MOI1']
 df['sars_4'] <- df['Cas9-v1 Avg.']
 df0 <- df[ , c("verap", "amiod", "sert", "chloro", "nortrip", "fluox", 'sars_5', 'sars_4')]
 df0_na <- na.omit(df0)
+'''
+df1 = select(df, -c("gene_1", "gene_2", "n_guides", "fdr_MOI3", "fdr_MOI1", "Rank_MO11", "Rank_MOI3", "score_MOI1", "score_MOI3" ))
+
+df1_1 <- df1[,-1]
+
+df0_na <- na.omit(df1_1)
+'''
 
 maxs <- apply(df0_na, 2, max)    
 mins <- apply(df0_na, 2, min)
