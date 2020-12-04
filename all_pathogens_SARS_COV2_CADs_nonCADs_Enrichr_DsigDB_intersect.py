@@ -92,20 +92,48 @@ for key, value in drug0.items():
 
 	if 'pval' in value and 'OR' in value:
 
+		if len(value['pval']) == 1:
+			continue
+
 		p_adjust = stats.p_adjust(FloatVector(value["pval"]), method = 'BH')
 		pval = scipy.stats.stats.combine_pvalues(p_adjust)
 
-		result = (np.mean(value['OR']), pval[1], value['pka'], value['logP'])
+		result = (pval[1], np.mean(value['OR']), value['pka'], value['logP'])
 
 		output.append(list((key,) + result)) 
 
 #sort the output desc
-output1 = sorted(output, key=lambda x: x[1], reverse=True)
+output1 = sorted(output, key=lambda x: x[2], reverse=True)
 
-with open('/Users/timpeterson/OneDrive-v3/Data/CADs/v2/DsigDB_all_pathogens.csv', 'w') as csvfile:
+import random
+
+num_rand_to_generate = 2806 - len(output1)
+
+def sample_floats(low, high, k=1):
+    """ Return a k-length list of unique random floats
+        in the range of low <= x <= high
+    """
+    result = []
+    seen = set()
+    for i in range(k):
+        x = random.uniform(low, high)
+        while x in seen:
+            x = random.uniform(low, high)
+        seen.add(x)
+        result.append(x)
+    return result
+
+pvals = sample_floats(0,1, num_rand_to_generate)
+
+ORs = sample_floats(0,2, num_rand_to_generate)
+
+for idx, val in enumerate(pvals):
+	output1.append(['', val, ORs[idx], '', ''])
+
+with open('/Users/timpeterson/OneDrive-v3/Data/CADs/v2/DsigDB_all_pathogens_gt1_cell_line_w_rands.csv', 'w') as csvfile:
 	spamwriter = csv.writer(csvfile, delimiter=',')
 
-	spamwriter.writerow(['drug', 'OR', 'pval', 'pka', 'logP'])
+	spamwriter.writerow(['drug', 'pval', 'OR', 'pka', 'logP'])
 	for row in output1:
 		#if any(field.strip() for field in row):
 		spamwriter.writerow(row)

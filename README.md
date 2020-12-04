@@ -30,6 +30,11 @@ transcriptional profiling of mammalian tissues/cells in response to 13 diverse p
 [//]: # (- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 13 pathogens.)
 - Equivalent code to the SQL queries is available via a Juptyer notebook: https://colab.research.google.com/drive/1CoYDm8LvrK9tRUsFbhweioUD1yF5Ozdy?usp=sharing
 
+
+# Figure 4
+
+Gene expression to identify drugs with broad anti-pathogen activity: https://colab.research.google.com/drive/1_wuYJcJgLK3MFl33f5IdhFF2U5tBmbum?usp=sharing 
+
 # underlying data
 
 - Many of the underlying data was obtained from analysis that can be obtained via https://github.com/tim-peterson/morpheome. Search for CADs, SSRIs, infectious disease (IDs).

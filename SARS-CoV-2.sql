@@ -106,3 +106,44 @@ on a.pk_a=b.parent_key
 join drug c
 on a.pk_a=c.primary_key ) d
 on e.Term like concat("", d.name, "%") order by x.`P-value` asc ) aa group by name_ order by pval_e asc limit 100) z 
+
+/* get all pkas and cLogPs for SARS-CoV2 ge */ 
+select aa.Term_e name0, SUBSTRING_INDEX(aa.Term_e, ' ', 1) AS name_, val as pka_, value as logP_, pval_e, pval_x, odds_e, odds_x from  (select val, value, e.Term as Term_e, pka,logP, e.`Adjusted P-value` pval_e, e.`Odds Ratio` odds_e, x.`Adjusted P-value` pval_x, x.`Odds Ratio` odds_x from SARS_COV2.`PMID_32747830_2xup_pos_vs_neg_all_samples (575 genes)` e
+join SARS_COV2.`PMID_32416070_patients_DEGs-mmc4_log(2.5)~5.65Xup (495 genes)` x
+on e.Term=x.Term
+left join (select * from (select kind as pka ,value as val, parent_key as pk_a from drug_calculated_properties where kind = 'pKa (strongest basic)' /*and value > 7*/ ) a
+join (select kind as logP, value, parent_key from drug_calculated_properties where kind = 'logP' /*and value > 0*/ /*group by parent_key*/ ) b
+on a.pk_a=b.parent_key
+join drug c
+on a.pk_a=c.primary_key ) d
+on e.Term like concat("", d.name, "%") order by x.`P-value` asc ) aa where value is not null  /*group by name_*/ order by pval_e asc
+
+/* get all pkas and cLogPs for all pathogens ge */ 
+select aa.Term_e name0, SUBSTRING_INDEX(aa.Term_e, ' ', 1) AS name_, val as pka_, value as logP_, pval_e, odds_e from  (select val, value, e.Term as Term_e, pka,logP, e.`Adjusted P-value` pval_e, e.`Odds Ratio` odds_e from ssri.`pathogens_tomics_gt2_pathogen_gt1_ (302 genes)` e
+left join (select * from (select kind as pka ,value as val, parent_key as pk_a from drug_calculated_properties where kind = 'pKa (strongest basic)' /*and value > 7*/  ) a
+join (select kind as logP, value, parent_key from drug_calculated_properties where kind = 'logP' /*and value > 0*/ /*group by parent_key*/ ) b
+on a.pk_a=b.parent_key
+join drug c
+on a.pk_a=c.primary_key ) d
+on e.Term like concat("", d.name, "%") order by e.`P-value` asc ) aa where value is not null /*group by name_*/ order by pval_e asc /* limit 100*/
+
+
+/* DrugBank get intersection count w/ DsigDB CADs */
+select * from (select * from (select kind as pka ,value as val, parent_key as pk_a from drug_calculated_properties where (kind = 'pKa (strongest basic)' and value > 8 and value < 12)  ) a
+join (select kind as logP, value, parent_key from drug_calculated_properties where (kind = 'logP' and value > 3)  ) b
+on a.pk_a=b.parent_key group by parent_key) a
+join drug
+on a.parent_key=drug.`primary_key`
+join DsigDB c
+on drug.name=c.Drug 
+group by Drug /* 363 */
+
+/* DrugBank get intersection count w/ DsigDB all drugs */
+select * from (select * from (select kind as pka ,value as val, parent_key as pk_a from drug_calculated_properties where (kind = 'pKa (strongest basic)' /*and value > 8 and value < 12*/)  ) a
+join (select kind as logP, value, parent_key from drug_calculated_properties where (kind = 'logP' /*and value > 3*/)  ) b
+on a.pk_a=b.parent_key group by parent_key) a
+join drug
+on a.parent_key=drug.`primary_key`
+join DsigDB c
+on drug.name=c.Drug 
+group by Drug /* 2806 */
