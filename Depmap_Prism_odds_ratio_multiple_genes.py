@@ -55,7 +55,7 @@ with open(path + dataset) as csv_file:
 
 genes = {}
 cell_line_g = []
-dataset = "Achilles_gene_effect-2019q4-Broad_t.csv"
+dataset = "depmap_2020q2_t.csv"
 with open(path + dataset) as csv_file:
 	csv_reader = csv.reader(csv_file, delimiter=",")
 	#next(csv_reader)
