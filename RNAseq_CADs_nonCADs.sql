@@ -73,8 +73,13 @@ order by (avg_nortrip/avg_dmso_hi + avg_verap/avg_dmso_hi + avg_amiod/avg_dmso_h
 
 
 
+/* p53 analysis */
+select * from p53_targets a
+left join `CADs_ge_v3_gt0.1_with_ratio` b
+on a.gene=b.gene where ratio is not null and ratio > 3
 
 
+select * from `CADs_ge_v3_gt0.1_with_ratio` where ratio > 3
 
 
 
