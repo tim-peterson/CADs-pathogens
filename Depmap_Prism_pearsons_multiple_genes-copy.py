@@ -29,7 +29,7 @@ path = "/Users/timpeterson/OneDrive-v3/Data/DepMap/"
 
 BROAD_drugs = {}
 
-dataset = "primary-screen-replicate-collapsed-treatment-info.csv"
+dataset = "secondary-screen-replicate-collapsed-treatment-info.csv"
 with open(path + dataset) as csv_file:
 	csv_reader = csv.DictReader(csv_file, delimiter=",")
 	for row in csv_reader:
@@ -39,7 +39,7 @@ with open(path + dataset) as csv_file:
 
 drugs = {}
 cell_line_d = []
-dataset = "primary_screen_replicate_collapsed_logfold_change_t.csv"
+dataset = "secondary_screen_replicate_collapsed_logfold_change_t.csv"
 with open(path + dataset) as csv_file:
 	csv_reader = csv.reader(csv_file, delimiter=",")
 	#next(csv_reader)
@@ -56,13 +56,14 @@ with open(path + dataset) as csv_file:
 genes = {}
 cell_line_g = []
 dataset = "Achilles_gene_effect-2019q4-Broad_t.csv"
+dataset = 'Achilles_gene_effect_2020q4_t.csv'
 with open(path + dataset) as csv_file:
 	csv_reader = csv.reader(csv_file, delimiter=",")
 	#next(csv_reader)
 	cnt = 0
 	for row in csv_reader:
-		#row[0].split("..")
-		gene = row[0].split("..")[0]
+		gene = row[0].split()[0]
+		#gene = row[0].split("..")[0]
 		row.pop(0)
 		if cnt == 0:
 			cell_line_g = row
@@ -95,37 +96,44 @@ input_genes =  ["MTOR..2475."]
 
 input_genes = ["ATRAID..51374.", "SLC37A3..84255."]
 
-input_genes = ["ARL1",
-"VPS51",
-"GOLPH3",
-"A4GALT",
-"TMED2",
-"ATP6V1H",
-"TRAPPC1",
-"TSSC1",
-"UGCG",
-"SPTSSA",
-"COG1",
-"ATP6AP2",
-"TMEM199",
-"WDR7",
-"COG7",
-"SLC35A2",
-"SLC35B2",
-"SPTLC2",
-"VPS52",
-"COG2",
-"TM9SF2",
-"COG8",
-"VPS54",
-"COG4",
-"SCFD1",
+input_genes = [
+
+"VPS53",
 "COG3",
-"VPS53"]
+"SCFD1",
+"COG4",
+"VPS54",
+"COG8",
+"TM9SF2",
+"COG2",
+"VPS52",
+"SPTLC2",
+"SLC35B2",
+"SLC35A2",
+"COG7",
+"WDR7",
+"TMEM199",
+"ATP6AP2",
+"COG1",
+"SPTSSA",
+"UGCG",
+"TSSC1",
+"TRAPPC1",
+"ATP6V1H",
+"TMED2",
+"A4GALT",
+"GOLPH3",
+"VPS51",
+"ARL1"]
+
+'''
+
+'''
 
 #input_genes = ["ATRAID (51374)", "SLC37A3 (84255)"]
 
-output_file_name = "top27_pathogens"
+output_file_name = "top27_pathogens_2020q4_secondary_prism"
+#output_file_name = "top14_pathogens"
 
 output = {}
 for x in input_genes:
@@ -133,7 +141,7 @@ for x in input_genes:
 	#intersect_genes = np.intersect1d(intersect_drugs_genes[0],genes[x],return_indices=True)
 
 	if x not in genes:
-		
+
 		continue
 
 	genes_ = np.take(genes[x], intersect_drugs_genes[2])

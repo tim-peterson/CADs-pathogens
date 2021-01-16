@@ -9,22 +9,26 @@ Relationship between cationic amphipathic drugs (CADs) and pathogens.
 
 
 # Figure 1D
+- [pipeline to generate CADs and non-CAD screens all in one file](https://github.com/tim-peterson/morpheome/blob/master/app/Console/Commands/Morpheome/pipeline/top_hits_small_mol_screens_with_external_morpheome.php)
 
--  CRISPRi_CADs_greater_than2.5.sql: get all genes with greater than 2.5x standard deviations from the mean for all six CADs.
+-  [CRISPRi_CADs_greater_than2.5.sql](https://github.com/tim-peterson/CADs-pathogens/blob/master/CRISPRi_CADs_greater_than2.5.sql): get all genes with greater than 2.5x standard deviations from the mean for all six CADs.
 
 # Figure 2B
 
 - pathogens_screen_count.R: code to visualize the common gene hits identified in
 genome-wide screens with the 15 pathogens.
 
+# Figure 2C
+
+- [infectious_agent_intersect_nonCADs_CADs.sql](https://github.com/tim-peterson/morpheome/blob/master/sql_commands/ssri/infectious_agent_intersect_nonCADs_CADs.sql)
 # Figure 3A
 
 - RNAseq_CADs_nonCADs.sql: get all genes with greater than 3x fold up or downregulated with all CADs where dmso control has a counts per million of greater than 0.1.
 
 
-# Figure 3C
+# Figure 3B
 
-- pathogens_transcriptional_profiling_count.R: code to visualize the common gene hits identified in
+- [pathogens_transcriptional_profiling_count.R](https://github.com/tim-peterson/CADs-pathogens/blob/master/pathogens_screen_count.R): code to visualize the common gene hits identified in
 transcriptional profiling of mammalian tissues/cells in response to 13 diverse pathogens. Most code to generate the raw data is SQL code, namely in pathogens_transcriptional_profiling.sql. 
 
 [//]: # (- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 13 pathogens.)

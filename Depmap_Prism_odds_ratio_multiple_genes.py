@@ -95,19 +95,7 @@ input_genes =  ["MTOR..2475."]
 
 input_genes = ["ATRAID..51374.", "SLC37A3..84255."]
 
-input_genes = ["ARL1",
-"VPS51",
-"GOLPH3",
-"A4GALT",
-"TMED2",
-"ATP6V1H",
-"TRAPPC1",
-"TSSC1",
-"UGCG",
-"SPTSSA",
-"COG1",
-"ATP6AP2",
-"TMEM199",
+input_genes = [
 "WDR7",
 "COG7",
 "SLC35A2",
@@ -123,9 +111,23 @@ input_genes = ["ARL1",
 "COG3",
 "VPS53"]
 
+'''"ARL1",
+"VPS51",
+"GOLPH3",
+"A4GALT",
+"TMED2",
+"ATP6V1H",
+"TRAPPC1",
+"TSSC1",
+"UGCG",
+"SPTSSA",
+"COG1",
+"ATP6AP2",
+"TMEM199",'''
+
 #input_genes = ["ATRAID (51374)", "SLC37A3 (84255)"]
 
-output_file_name = "top27_pathogens"
+output_file_name = "top14_pathogens"
 
 output = {}
 for x in input_genes:
