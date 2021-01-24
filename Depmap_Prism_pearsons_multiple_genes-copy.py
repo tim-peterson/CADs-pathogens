@@ -129,10 +129,61 @@ input_genes = [
 '''
 
 '''
+input_genes = ["NOS3",
+"TOMM40",
+"LAT",
+"APOE",
+"RPL6",
+"APOC1",
+"RP11-162P23.2",
+"BRAP",
+"ATXN2",
+"KCNS1",
+"ZFP36L2",
+"SH2B3"]
+
+input_genes = ["APOE",
+"APOC1",
+"PVRL2",
+"TOMM40",
+"FGF5",
+"FGFR2",
+"NOS3",
+"INSR",
+"KCNK3",
+"C10orf107",
+"RGL3",
+"FURIN",
+"ARHGAP42",
+"FES",
+"SH2B3",
+"ATXN2",
+"TOX3",
+"MTHFR",
+"CLCN6",
+"CASZ1"]
+
+input_genes = ["NOS3",
+"ABI2",
+"PTPN11",
+"APOE",
+"SH2B3",
+"BRAP",
+"RPL6",
+"ATXN2",
+"ZFP36L2",
+"SLC17A3",
+"KCNS1",
+"LAT",
+"TOMM40",
+"RP11-162P23.2",
+"APOC1",
+]
+
 
 #input_genes = ["ATRAID (51374)", "SLC37A3 (84255)"]
 
-output_file_name = "top27_pathogens_2020q4_secondary_prism"
+output_file_name = "top" + str(len(input_genes)) + "_by_pval_top250_cutoff_aging_gwas_2020q4_secondary_prism"
 #output_file_name = "top14_pathogens"
 
 output = {}

@@ -1,5 +1,5 @@
-# CADs-pathogens
-Relationship between cationic amphipathic drugs (CADs) and pathogens.
+# sphingolipids-pathogens-aging
+Relationship between sphingolipids, pathogens, and aging. Uses cationic amphipathic drugs (CADs) to unveil the relationship of sphingolipids, which are natural cationic amphipaths, to pathogens and aging.
 
 [Biorxiv paper - v1](https://www.biorxiv.org/content/10.1101/2020.04.10.035683v1.full.pdf).
 
@@ -15,7 +15,7 @@ Relationship between cationic amphipathic drugs (CADs) and pathogens.
 
 # Figure 2B
 
-- pathogens_screen_count.R: code to visualize the common gene hits identified in
+- [pathogens_screen_count_graphing.R](https://github.com/tim-peterson/CADs-pathogens/blob/master/pathogens_screen_count_graphing.R): code to visualize the common gene hits identified in
 genome-wide screens with the 15 pathogens.
 
 # Figure 2C
@@ -28,19 +28,21 @@ genome-wide screens with the 15 pathogens.
 
 # Figure 3B
 
-- [pathogens_transcriptional_profiling_count.R](https://github.com/tim-peterson/CADs-pathogens/blob/master/pathogens_screen_count.R): code to visualize the common gene hits identified in
-transcriptional profiling of mammalian tissues/cells in response to 13 diverse pathogens. Most code to generate the raw data is SQL code, namely in pathogens_transcriptional_profiling.sql. 
+- [pathogens_transcriptional_profiling_count_graphing.R](https://github.com/tim-peterson/CADs-pathogens/blob/master/pathogens_transcriptional_profiling_count_graphing.R): code to visualize the common gene hits identified in transcriptional profiling of mammalian tissues/cells in response to 13 diverse pathogens. Most code to generate the raw data is SQL code, namely in pathogens_transcriptional_profiling.sql. 
 
 [//]: # (- pathogens_transcriptomics.py: gets gene occurrence counts across transcriptional profiling of 13 pathogens.)
 - Equivalent code to the SQL queries is available via a Juptyer notebook: https://colab.research.google.com/drive/1CoYDm8LvrK9tRUsFbhweioUD1yF5Ozdy?usp=sharing
 
+# Figure 4A
+
+[aging_gwas_count_graphing.R](https://github.com/tim-peterson/CADs-pathogens/blob/master/aging_gwas_count_graphing.R): code to visualize the genes in the top 200 by p-value counted by aging-related disease. P-values for each gene for each disease were aggregated using this Juptyer notebook script: https://colab.research.google.com/drive/1WpuKph4o8hZgMC7mJU_SpBRipWJy7A8C?usp=sharing 
 
 # Figure 4
 
 Gene expression to identify drugs with broad anti-pathogen activity: https://colab.research.google.com/drive/1_wuYJcJgLK3MFl33f5IdhFF2U5tBmbum?usp=sharing 
 
-# underlying data
+# additional underlying data
 
-- Many of the underlying data was obtained from analysis that can be obtained via https://github.com/tim-peterson/morpheome. Search for CADs, SSRIs, infectious disease (IDs).
+- Additional underlying data was obtained from analysis from https://github.com/tim-peterson/morpheome. Search for CADs, SSRIs, infectious disease (IDs).
 
 
